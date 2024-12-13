@@ -1,0 +1,38 @@
+﻿@model AndresChaves.Models.Personas
+
+@{
+    ViewBag.Title = "Detalles de Persona";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center text-info mb-4">Detalles de la Persona</h2>
+
+<div class="container">
+    <div class="card shadow-sm p-4">
+        <h4 class="text-secondary mb-4">Información de la Persona</h4>
+        <dl class="row">
+            <dt class="col-sm-3 font-weight-bold">@Html.DisplayNameFor(model => model.Nombres)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Nombres)</dd>
+
+            <dt class="col-sm-3 font-weight-bold">@Html.DisplayNameFor(model => model.Apellidos)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Apellidos)</dd>
+
+            <dt class="col-sm-3 font-weight-bold">@Html.DisplayNameFor(model => model.Num_identificacion)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Num_identificacion)</dd>
+
+            <dt class="col-sm-3 font-weight-bold">@Html.DisplayNameFor(model => model.Email)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+            <dt class="col-sm-3 font-weight-bold">@Html.DisplayNameFor(model => model.Tipo_identificacion)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Tipo_identificacion)</dd>
+
+            <dt class="col-sm-3 font-weight-bold">@Html.DisplayNameFor(model => model.Fecha_creacion)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Fecha_creacion)</dd>
+        </dl>
+
+        <div class="d-flex justify-content-between mt-4">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Personas }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Volver a la Lista", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+</div>

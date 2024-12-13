@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AndresChaves.Models.Personas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4">Lista de Personas</h2>
+
+<div class="container">
+    <div class="card shadow-sm p-4">
+        <div class="d-flex justify-content-between mb-4">
+            <h4 class="mb-0">Personas Registradas</h4>
+            @Html.ActionLink("Crear Nueva Persona", "Create", null, new { @class = "btn btn-primary" })
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Nombres)</th>
+                    <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Apellidos)</th>
+                    <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Num_identificacion)</th>
+                    <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
+                    <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Tipo_identificacion)</th>
+                    <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Fecha_creacion)</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Nombres)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Apellidos)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Num_identificacion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Tipo_identificacion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Fecha_creacion)</td>
+                        <td class="text-center">
+                            <a href="@Url.Action("Edit", new { id = item.Id_Personas })" class="btn btn-warning btn-sm me-2">Editar</a>
+                            <a href="@Url.Action("Details", new { id = item.Id_Personas })" class="btn btn-info btn-sm me-2">Detalles</a>
+                            <a href="@Url.Action("Delete", new { id = item.Id_Personas })" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-end mt-4">
+            <a href="@Url.Action("Gestion", "Home")" class="btn btn-secondary me-3">Regresar a Gestion</a>
+        </div>
+    </div>
+</div>

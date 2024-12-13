@@ -1,0 +1,37 @@
+﻿@model AndresChaves.Models.Usuarios
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4">Detalles del Usuario</h2>
+
+<div class="container">
+    <div class="card shadow-sm p-4">
+        <h4 class="mb-3">Información del Usuario</h4>
+        <hr />
+
+        <dl class="row mb-4">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Usuario)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Usuario)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Contraseña)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Contraseña)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Fecha_creacion)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Fecha_creacion)</dd>
+
+            @*<dt class="col-sm-3">@Html.DisplayNameFor(model => model.HashKey)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.HashKey)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.HashIV)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.HashIV)</dd>*@
+        </dl>
+
+        <div class="d-flex justify-content-end">
+            <a href="@Url.Action("Edit", new { id = Model.Id_Usuarios })" class="btn btn-info me-3">Editar</a>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la Lista</a>
+        </div>
+    </div>
+</div>

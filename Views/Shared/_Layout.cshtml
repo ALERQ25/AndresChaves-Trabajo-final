@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Trabajo Andres Chaves</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            background-color: #007bff; /* Color azul más vibrante */
+            border-bottom: 2px solid #0056b3; /* Agregar borde inferior */
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            color: #ffffff !important;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+            .navbar-nav .nav-link:hover {
+                background-color: #0056b3;
+                color: #fff !important;
+                transform: scale(1.05); /* Efecto de hover con aumento */
+            }
+
+        .navbar-nav .nav-item + .nav-item {
+            margin-left: 15px; /* Espaciado entre elementos */
+        }
+
+        .btn-logout {
+            background-color: #f44336; /* Rojo para llamar la atención */
+            color: #ffffff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-logout:hover {
+                background-color: #d32f2f;
+                transform: scale(1.05); /* Aumento en hover */
+            }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container.body-content {
+            margin-top: 30px;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+        }
+
+        /* Estilo de botón adicional en el layout */
+        .btn {
+            transition: background-color 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: #5c6bc0;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark shadow">
+        <div class="container">
+            @Html.ActionLink("Trabajo Andres Chaves", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1 d-flex justify-content-end">
+                    <li class="nav-item">@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <!-- Mostrar botón de Logout si el usuario está autenticado -->
+                        <li class="nav-item">
+                            @using (Html.BeginForm("Logout", "Home", FormMethod.Post, new { @class = "nav-link" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn-logout">
+                                    Cerrar Sesión
+                                </button>
+                            }
+                        </li>
+                    }
+                    else
+                    {
+                        <!-- Si no está autenticado, mostrar enlace de Login -->
+                        <li class="nav-item">@Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p class="footer-text">&copy; @DateTime.Now.Year - Trabajo Andres Chaves</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿@model AndresChaves.Models.Usuarios
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4">Eliminar Usuario</h2>
+
+<div class="container">
+    <div class="card shadow-sm p-4">
+        <h4 class="mb-3">¿Está seguro que desea eliminar este usuario?</h4>
+        <hr />
+
+        <dl class="row mb-4">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Usuario)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Usuario)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Contraseña)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Contraseña)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Fecha_creacion)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Fecha_creacion)</dd>
+
+            @*<dt class="col-sm-3">@Html.DisplayNameFor(model => model.HashKey)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.HashKey)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.HashIV)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.HashIV)</dd>*@
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="d-flex justify-content-end">
+                <a href="@Url.Action("Index")" class="btn btn-secondary me-3">Cancelar</a>
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+            </div>
+                    }
+    </div>
+</div>

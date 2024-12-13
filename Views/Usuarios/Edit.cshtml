@@ -1,0 +1,68 @@
+﻿@model AndresChaves.Models.Usuarios
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4">Editar Usuario</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="card shadow-sm p-4">
+            <h4 class="mb-3">Información del Usuario</h4>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id_Usuarios)
+
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Contraseña, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Contraseña, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Fecha_creacion, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Fecha_creacion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Fecha_creacion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group row mb-3">
+                @Html.LabelFor(model => model.HashKey, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.HashKey, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HashKey, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.HashIV, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.HashIV, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HashIV, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            <div class="d-flex justify-content-end mt-4">
+                <a href="@Url.Action("Index")" class="btn btn-secondary me-3">Volver a la lista</a>
+                <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+}

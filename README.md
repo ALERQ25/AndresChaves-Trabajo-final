@@ -1,0 +1,1 @@
+Buenas profe, lo que pasa es que yo cree mi proyecto para que solo los administradores puedan tener acceso a los principios solid asi que en ese caso le adjunto el Usuario: Andres Chaves Contraseña : 123456
